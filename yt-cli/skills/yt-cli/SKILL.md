@@ -1,6 +1,6 @@
 ---
 name: yt-cli
-description: Download and transcribe YouTube videos with speaker diarization and auto-chapters. Use when the user wants to transcribe a video URL, search YouTube for videos, search existing transcripts, list transcribed videos, read transcript content, or check if a video has already been transcribed.
+description: Download and transcribe YouTube videos with speaker diarization and auto-chapters. Use when the user wants to transcribe a video URL, search YouTube for videos, list videos from a channel, search existing transcripts, list transcribed videos, read transcript content, or check if a video has already been transcribed.
 ---
 
 # yt-cli
@@ -61,11 +61,20 @@ yt-cli search 'query' [-n limit]
 ```
 Full-text search across all transcripts, descriptions, and chapter summaries.
 
+### List channel videos
+```bash
+yt-cli channel '<channel-url>' [-n limit]
+```
+List latest videos from a YouTube channel. Takes a channel URL (e.g., `https://youtube.com/@CHANNEL`) or channel ID.
+
+Options:
+- `-n, --limit <LIMIT>` - Maximum videos to show (default: 20)
+
 ### List transcripts
 ```bash
-yt-cli list [-p platform] [-c channel]
+yt-cli list [-p platform] [-c channel] [-H handle]
 ```
-List all transcribed videos with optional filtering.
+List all transcribed videos with optional filtering by platform, channel display name (`-c`), or channel handle (`-H`, e.g., `@EconomicsUnmasked`).
 
 ### Read a transcript
 ```bash
