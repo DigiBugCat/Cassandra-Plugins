@@ -1,0 +1,25 @@
+{
+  "name": "cassandra-plugins",
+  "owner": {
+    "name": "Andrew Sulistio"
+  },
+  "metadata": {
+    "description": "Andrew's personal Claude Code plugins"
+  },
+  "plugins": [
+    {
+      "name": "yt-cli",
+      "source": "./yt-cli",
+      "description": "Download and transcribe YouTube videos with speaker diarization and auto-chapters",
+      "version": "1.0.0",
+      "strict": false
+    },
+    {
+      "name": "finance",
+      "source": "./finance",
+      "description": "Financial analysis, valuation, options trading, and trade discipline skills",
+      "version": "1.0.0",
+      "strict": false
+    }
+  ]
+}
