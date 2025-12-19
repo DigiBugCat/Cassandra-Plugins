@@ -1,0 +1,8 @@
+{
+  "name": "gemini-research",
+  "description": "Stateful AI research using Google's Gemini Interactions API with web grounding and multi-level reasoning",
+  "version": "1.0.0",
+  "author": {
+    "name": "DigiBugCat"
+  }
+}

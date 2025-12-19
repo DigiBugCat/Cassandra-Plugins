@@ -21,6 +21,39 @@ Download and transcribe YouTube videos with speaker diarization and auto-chapter
 
 ---
 
+### gemini-research
+
+Stateful AI research using Google's Gemini Interactions API with web grounding and multi-level reasoning.
+
+**Dependencies:**
+- [gemini-interactions-mcp](https://github.com/DigiBugCat/gemini-interactions-mcp) - MCP server for Gemini Interactions API
+- [Gemini API Key](https://aistudio.google.com/app/apikey) - Set `GEMINI_API_KEY` environment variable
+
+**Tools provided:**
+| Tool | Description |
+|------|-------------|
+| **search** | Quick web search with structured results (3-7s) |
+| **ask** | Grounded answers with balanced reasoning (8-12s) |
+| **ask_thinking** | Deep reasoning for complex problems (10-15s) |
+| **follow_up** | Continue stateful conversations with full context |
+
+**Usage:**
+```
+"Search for the latest AI news"
+→ search: returns structured results with sources
+
+"What are the current trends in renewable energy?"
+→ ask: grounded answer with citations
+
+"Analyze the implications of recent Fed policy changes"
+→ ask_thinking: deep multi-step analysis with sources
+
+"Tell me more about the inflation impact"
+→ follow_up: continues previous conversation
+```
+
+---
+
 ### finance
 
 Financial analysis, valuation, options trading, and trade discipline skills.
