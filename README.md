@@ -26,30 +26,31 @@ Download and transcribe YouTube videos with speaker diarization and auto-chapter
 Stateful AI research using Google's Gemini Interactions API with web grounding and multi-level reasoning.
 
 **Dependencies:**
-- [gemini-interactions-mcp](https://github.com/DigiBugCat/gemini-interactions-mcp) - MCP server for Gemini Interactions API
+- [gemini-ask](https://github.com/DigiBugCat/gemini-interactions-mcp) - `cargo install --git https://github.com/DigiBugCat/gemini-interactions-mcp`
 - [Gemini API Key](https://aistudio.google.com/app/apikey) - Set `GEMINI_API_KEY` environment variable
 
-**Tools provided:**
-| Tool | Description |
-|------|-------------|
+**Commands:**
+| Command | Description |
+|---------|-------------|
 | **search** | Quick web search with structured results (3-7s) |
 | **ask** | Grounded answers with balanced reasoning (8-12s) |
-| **ask_thinking** | Deep reasoning for complex problems (10-15s) |
-| **follow_up** | Continue stateful conversations with full context |
+| **think** | Deep reasoning for complex problems (10-15s) |
+
+All commands support `-i <interaction_id>` to continue previous conversations with full context.
 
 **Usage:**
-```
-"Search for the latest AI news"
-→ search: returns structured results with sources
+```bash
+# Quick search
+gemini-ask search 'latest AI news'
 
-"What are the current trends in renewable energy?"
-→ ask: grounded answer with citations
+# Grounded answer
+gemini-ask ask 'What are the current trends in renewable energy?'
 
-"Analyze the implications of recent Fed policy changes"
-→ ask_thinking: deep multi-step analysis with sources
+# Deep analysis
+gemini-ask think 'Analyze the implications of recent Fed policy changes'
 
-"Tell me more about the inflation impact"
-→ follow_up: continues previous conversation
+# Follow-up (use -i with any command)
+gemini-ask ask 'Tell me more about inflation impact' -i <interaction_id>
 ```
 
 ---
