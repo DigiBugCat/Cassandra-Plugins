@@ -129,17 +129,19 @@ gemini-ask think 'What are the key risks mentioned?' -f report.pdf -i <id>
 
 All commands return:
 ```
-[Answer text with inline citations]
+[Answer text]
 
 Sources:
-1. [Title](URL)
-2. [Title](URL)
+1. [Source](URL)
+2. [Source](URL)
 ...
 
 ---
-interaction_id: [ID for follow-ups]
-tokens: X in, Y out, Z reasoning
+To follow up, use interaction_id: <id>
+Request completed in X.XXs
 ```
+
+**Important:** Save the `interaction_id` from the response to use with `-i` for follow-up queries.
 
 ## Best Practices
 
