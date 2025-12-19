@@ -18,48 +18,70 @@ CLI tool (`gemini-ask`) for stateful, web-grounded research using Google's Gemin
 
 ## Commands
 
-### search - Quick Web Search
+### search - Quick Context Gathering
 ```bash
 gemini-ask search '<query>' [--max-results N]
 gemini-ask --search '<query>'  # shorthand
 ```
-Fast search with minimal thinking. Returns structured results with titles, URLs, and snippets.
+**PURPOSE:** Fast web search for gathering context and finding sources. Minimal reasoning.
 
-**Use for:**
-- Finding sources before deeper analysis
-- Quick fact lookups
-- Gathering URLs for follow-up questions
+**USE WHEN:**
+- Gathering background context before answering
+- Finding recent news, articles, or documentation
+- Quick fact checks (prices, dates, versions)
+- Building a list of sources to reference
+
+**DO NOT USE FOR:** Questions requiring explanation or analysis.
 
 **Response time:** 3-7 seconds
 
-### ask - Balanced Grounded Answers
+### ask - General Questions (DEFAULT)
 ```bash
 gemini-ask ask '<query>' [-i <interaction_id>]
 gemini-ask --ask '<query>' [-i <interaction_id>]  # shorthand
 ```
-Medium-depth reasoning with automatic web grounding. Model decides when to search.
+**PURPOSE:** Answer general questions with web grounding. This is the default command for most queries.
 
-**Use for:**
-- General research questions
-- Topics needing current information
-- Questions with straightforward answers
+**USE WHEN:**
+- Answering straightforward questions
+- Explaining concepts or topics
+- Getting current information with context
+- Most research tasks
+
+**DO NOT USE FOR:** Multi-step analysis or comparing complex tradeoffs.
 
 **Response time:** 8-12 seconds
 
-### think - Deep Reasoning
+### think - Complex Analysis Only
 ```bash
 gemini-ask think '<query>' [-i <interaction_id>]
 gemini-ask --think '<query>' [-i <interaction_id>]  # shorthand
 ```
-High-level thinking for complex problems. Multi-step analysis with thorough sourcing.
+**PURPOSE:** Deep reasoning for genuinely complex problems. Uses significantly more compute.
 
-**Use for:**
-- Complex technical questions
-- Multi-faceted analysis
-- Problems requiring step-by-step reasoning
-- Controversial topics needing balanced views
+**USE ONLY WHEN:**
+- Comparing multiple complex options with tradeoffs
+- Multi-step technical analysis
+- Problems requiring explicit reasoning chains
+- Synthesizing information from many sources
+
+**DO NOT USE FOR:** Simple questions, lookups, or explanations. Use `ask` instead.
 
 **Response time:** 10-15 seconds
+
+## Command Selection Guide
+
+```
+Is it a quick lookup or context gathering?
+  → YES: use `search`
+  → NO: ↓
+
+Does it require multi-step reasoning or complex tradeoff analysis?
+  → YES: use `think`
+  → NO: use `ask` (default)
+```
+
+**Rule of thumb:** When in doubt, use `ask`. Only escalate to `think` for genuinely complex problems.
 
 ## Stateful Conversations with `-i`
 
@@ -145,23 +167,28 @@ Request completed in X.XXs
 
 ## Best Practices
 
-### Choose the Right Command
-| Need | Command |
-|------|---------|
-| Quick facts, find sources | `search` |
-| General questions | `ask` |
-| Complex analysis | `think` |
-| Continue conversation | any command + `-i` |
+### Default to `ask`
+Most queries should use `ask`. It handles general questions, explanations, and research well.
+
+### Reserve `think` for Complexity
+Only use `think` when you need:
+- Explicit multi-step reasoning
+- Complex tradeoff analysis
+- Synthesis across many sources
+
+If the answer is straightforward, `think` wastes compute. Use `ask`.
+
+### Use `search` for Context
+Before answering complex questions, gather context:
+```bash
+gemini-ask search 'topic keywords'  # gather sources
+gemini-ask ask 'actual question'    # answer with context
+```
 
 ### Effective Queries
 - Be specific in your questions
 - Include context for better results
 - Use `-i` to build on previous responses instead of repeating context
-
-### Managing Conversations
-- Save `interaction_id` when you'll need follow-ups
-- Any command can continue a conversation with `-i`
-- Switch between `ask` and `think` based on complexity
 
 ### Presenting Results
 - Always include sources from the response
