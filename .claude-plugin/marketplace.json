@@ -20,6 +20,13 @@
       "description": "Financial analysis, valuation, options trading, and trade discipline skills",
       "version": "1.0.0",
       "strict": false
+    },
+    {
+      "name": "gemini-research",
+      "source": "./gemini-research",
+      "description": "Stateful AI research using Google's Gemini Interactions API with web grounding and multi-level reasoning",
+      "version": "1.0.0",
+      "strict": false
     }
   ]
 }
