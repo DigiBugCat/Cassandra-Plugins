@@ -1,7 +1,7 @@
 {
   "name": "gemini-research",
-  "description": "Stateful AI research using Google's Gemini Interactions API with web grounding and multi-level reasoning",
-  "version": "1.1.0",
+  "description": "Three focused skills for web research: gemini-search (quick lookups), gemini-ask (general questions), gemini-think (deep analysis)",
+  "version": "2.0.0",
   "author": {
     "name": "DigiBugCat"
   }
