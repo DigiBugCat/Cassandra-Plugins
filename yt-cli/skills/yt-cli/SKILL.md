@@ -94,6 +94,16 @@ yt-cli reindex
 ```
 Rebuild the search index from existing transcript files.
 
+### Initialize (first-time setup)
+```bash
+yt-cli init [-k api-key] [-f]
+```
+Set up yt-cli with your AssemblyAI API key. Required before first transcription.
+
+Options:
+- `-k, --api-key <KEY>` - AssemblyAI API key (prompts interactively if not provided)
+- `-f, --force` - Overwrite existing configuration
+
 ## Transcript Format
 
 The markdown transcript includes:
@@ -131,5 +141,31 @@ Summary of the main content...
 │               ├── transcript.json
 │               ├── metadata.json
 │               └── audio.m4a
-└── yt-transcribe.db
+└── transcripts.db
 ```
+
+## Troubleshooting
+
+### API key not configured
+```
+Error: AssemblyAI API key not found
+```
+Run `yt-cli init -k <your-api-key>` to set up your API key.
+
+### yt-dlp errors
+```
+Error: Unable to download video
+```
+- Update yt-dlp: `brew upgrade yt-dlp` or `pip install -U yt-dlp`
+- Video may be unavailable, private, or region-locked
+- Check if the URL is valid and accessible in a browser
+
+### Transcription timeout
+Long videos (2+ hours) may take significant time. Use background execution and poll for completion.
+
+### Database out of sync
+If transcripts exist on disk but don't appear in search/list results:
+```bash
+yt-cli reindex
+```
+This rebuilds the search index from existing transcript files.
